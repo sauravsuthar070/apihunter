@@ -1,24 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import { useSelector , useDispatch  } from 'react-redux';
+import { increase , decrement } from './action/index';
 
 function App() {
+  const mystate = useSelector((state) => state.inc_dec)
+ const dispatch = useDispatch();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <h1>welcone to react redux</h1>
+         <input type="text mt-5" value={mystate}/>
+         
+           <br></br>
+
+         <button onClick={() => dispatch(increase())} className="btn btn-primary my-5" >add</button>   
+         <button onClick={() => dispatch(decrement())} className="btn btn-danger mx-3">minus</button>  
+    </div> 
   );
 }
 
